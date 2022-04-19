@@ -28,6 +28,7 @@
     // :global(.color-area)
     //   width: 170px
     //   height: 170px
+    z-index: 50
     &.hidden
       display: none
     :global(.slider)
