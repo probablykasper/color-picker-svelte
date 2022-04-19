@@ -13,6 +13,7 @@
     "format": "prettier --plugin-search-dir=. --write src *.js && eslint --fix src *.js"
   },
   "devDependencies": {
+    "@ctrl/tinycolor": "^3.4.1",
     "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "^1.0.0-next.315",
     "@typescript-eslint/eslint-plugin": "^5.20.0",

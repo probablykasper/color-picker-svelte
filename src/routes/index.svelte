@@ -1,7 +1,17 @@
 <script lang="ts">
+  import { Color } from '$lib/color'
+  import ColorArea from '$lib/ColorArea.svelte'
+  import HueSlider from '$lib/HueSlider.svelte'
+
+  let color = new Color('#00ff9d')
 </script>
 
-<h1>Color Picker Svelte</h1>
+<h1 style:color={color.toHex()}>Color Picker Svelte</h1>
+
+<div style="margin: 20px">
+  <ColorArea bind:color />
+  <HueSlider bind:color />
+</div>
 
 <style lang="sass">
   :global(body)
