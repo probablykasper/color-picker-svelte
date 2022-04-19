@@ -7,6 +7,8 @@
 
 Color picker for Svelte
 
+[REPL](https://svelte.dev/repl/hello-world?version=3.47.0)
+
 ## Install
 
 ```
