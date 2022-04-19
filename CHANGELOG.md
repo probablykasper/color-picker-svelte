@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.3.0 - 2022 Apr 19
 - Mobile support
 
 ## 0.2.0 - 2022 Apr 19
