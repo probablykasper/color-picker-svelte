@@ -1,9 +1,6 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    // Global types
-    "types": ["@sveltejs/kit"],
-
-    "strict": true
+    "module": "es2020"
   }
 }
