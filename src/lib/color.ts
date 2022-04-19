@@ -1,19 +1,10 @@
 import { TinyColor } from '@ctrl/tinycolor'
+import { clamp } from './util'
 
 type Hsv = {
   h: number
   s: number
   v: number
-}
-
-function clamp(min: number, max: number, x: number): number {
-  if (x < min) {
-    return min
-  } else if (x > max) {
-    return max
-  } else {
-    return x
-  }
 }
 
 export class Color {
@@ -33,6 +24,6 @@ export class Color {
     }
   }
   toHex() {
-    return new TinyColor({ h: this.h, s: this.s, v: this.v }).toHex()
+    return '#' + new TinyColor({ h: this.h, s: this.s, v: this.v }).toHex()
   }
 }

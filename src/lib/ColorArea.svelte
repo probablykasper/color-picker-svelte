@@ -4,27 +4,23 @@
   export let color: Color
 
   let hue = color.h
-  $: if (color.s > 0 && color.v > 0) {
+  $: if (color.s > 0 || color.v > 0) {
     hue = color.h
   }
 
-  let areaElement: HTMLElement
+  let parent: HTMLElement
 
   function onMouse(e: MouseEvent) {
     if (mouseHold && e.target instanceof HTMLElement) {
-      const rect = areaElement.getBoundingClientRect()
+      const rect = parent.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
 
-      console.log(hue)
-
-      console.log(hue, x / rect.width, 1 - y / rect.height)
       color = new Color({
         h: hue,
         s: x / rect.width,
         v: 1 - y / rect.height,
       })
-      console.log(color)
     }
   }
   let mouseHold = false
@@ -42,28 +38,31 @@
 <svelte:window on:mousemove={onMouse} on:mouseup={mouseUp} />
 
 <div
-  bind:this={areaElement}
+  bind:this={parent}
   class="color-area"
   on:mousedown={mouseDown}
   style:--hue-color={`hsl(${Math.round(hue)},100%,50%)`}
 >
-  <div class="point" style:top={(1 - color.v) * 100 + '%'} style:left={color.s * 100 + '%'} />
+  <div
+    class="handle"
+    style:top={(1 - color.v) * 100 + '%'}
+    style:left={color.s * 100 + '%'}
+    style:background-color={color.toHex()}
+  />
 </div>
 
 <style lang="sass">
   .color-area
-    width: 200px
+    width: 100%
     user-select: none
-    height: 170px
-    border: 2px solid white
+    height: 100%
     position: relative
     background: linear-gradient(transparent, #000000), linear-gradient(0.25turn, #ffffff, transparent), var(--hue-color)
-  .point
-    width: 12px
-    height: 12px
+  .handle
+    width: 14px
+    height: 14px
     position: absolute
     transform: translate(-50%, -50%)
     border: 2px solid #ffffff
-    box-shadow: 0px 0px 3px 0px rgba(0,0,0,1)
     border-radius: 50%
 </style>

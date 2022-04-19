@@ -4,23 +4,33 @@
   import HueSlider from '$lib/HueSlider.svelte'
 
   let color = new Color('#00ff9d')
+  $: console.log(color)
 </script>
+
+{color.toHex()}
 
 <h1 style:color={color.toHex()}>Color Picker Svelte</h1>
 
-<div style="margin: 20px">
-  <ColorArea bind:color />
-  <HueSlider bind:color />
+<div class="center">
+  <div class="color-picker">
+    <ColorArea bind:color />
+    <HueSlider bind:color />
+  </div>
 </div>
 
 <style lang="sass">
-  :global(body)
-    margin: 100px 0px
-    font-family: Arial, Helvetica, sans-serif
-    font-size: 18px
-    background-color: #111318
-    color: #f2f2f2
-    text-align: center
-  h1
-    color: #00ff9d
+  .center
+    display: flex
+    justify-content: center
+  .color-picker
+    display: flex
+    border: 1px solid white
+    border-radius: 5px
+    padding: 12px
+    // background-color: #ffffff
+    :global(.color-area)
+      width: 170px
+      height: 170px
+    :global(.slider)
+      margin-left: 12px
 </style>
