@@ -11,38 +11,64 @@
 
   let parent: HTMLElement
 
+  function pickPos(clientX: number, clientY: number) {
+    const rect = parent.getBoundingClientRect()
+    const x = clientX - rect.left
+    const y = clientY - rect.top
+
+    color = new Color({
+      h: hue,
+      s: x / rect.width,
+      v: 1 - y / rect.height,
+    })
+  }
+
   function onMouse(e: MouseEvent) {
     if (mouseHold && e.target instanceof HTMLElement) {
-      const rect = parent.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-
-      color = new Color({
-        h: hue,
-        s: x / rect.width,
-        v: 1 - y / rect.height,
-      })
+      pickPos(e.clientX, e.clientY)
     }
   }
   let mouseHold = false
   function mouseDown(e: MouseEvent) {
     if (e.buttons === 1) {
       mouseHold = true
-      onMouse(e)
+      pickPos(e.clientX, e.clientY)
     }
   }
   function mouseUp() {
     mouseHold = false
   }
+
+  let touching = false
+  function onTouch(e: TouchEvent) {
+    if (touching) {
+      pickPos(e.touches[0].clientX, e.touches[0].clientY)
+    }
+  }
+  function touchStart(e: TouchEvent) {
+    if (e.touches.length === 1) {
+      touching = true
+      pickPos(e.touches[0].clientX, e.touches[0].clientY)
+    }
+  }
+  function touchEnd() {
+    touching = false
+  }
 </script>
 
-<svelte:window on:mousemove={onMouse} on:mouseup={mouseUp} />
+<svelte:window
+  on:mousemove={onMouse}
+  on:mouseup={mouseUp}
+  on:touchmove={onTouch}
+  on:touchend={touchEnd}
+/>
 
 <div
   bind:this={parent}
   bind:clientHeight
   class="color-area"
   on:mousedown={mouseDown}
+  on:touchstart|preventDefault={touchStart}
   style:--hue-color={`hsl(${Math.round(hue)},100%,50%)`}
 >
   <div

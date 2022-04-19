@@ -7,7 +7,7 @@
   export let isOpen = false
 </script>
 
-<div class="color-picker" class:hidden={!isOpen}>
+<div class="color-picker" class:hidden={!isOpen} on:touchstart|preventDefault>
   <ColorArea bind:color />
   <HueSlider bind:color />
 </div>
@@ -24,7 +24,7 @@
     box-sizing: border-box
     padding: 12px
     width: 100%
-    height: 200px
+    height: 210px
     // :global(.color-area)
     //   width: 170px
     //   height: 170px

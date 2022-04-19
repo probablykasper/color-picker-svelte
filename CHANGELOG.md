@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Mobile support
+
 ## 0.2.0 - 2022 Apr 19
 - Add `class` prop to `ColorInput`
 - CSS fixes

@@ -7,29 +7,59 @@
 
   let parent: HTMLElement
 
+  function pickPos(clientY: number) {
+    const rect = parent.getBoundingClientRect()
+    const y = clientY - rect.top
+    const percentage = (value = y / rect.height)
+    value = clamp(0, max, percentage * max)
+  }
+
   function onMouse(e: MouseEvent) {
     if (mouseHold && e.target instanceof HTMLElement) {
-      const rect = parent.getBoundingClientRect()
-      const y = e.clientY - rect.top
-      const percentage = (value = y / rect.height)
-      value = clamp(0, max, percentage * max)
+      pickPos(e.clientY)
     }
   }
   let mouseHold = false
   function mouseDown(e: MouseEvent) {
     if (e.buttons === 1) {
       mouseHold = true
-      onMouse(e)
+      pickPos(e.clientY)
     }
   }
   function mouseUp() {
     mouseHold = false
   }
+
+  let touching = false
+  function onTouch(e: TouchEvent) {
+    if (touching) {
+      pickPos(e.touches[0].clientY)
+    }
+  }
+  function touchStart(e: TouchEvent) {
+    if (e.touches.length === 1) {
+      touching = true
+      pickPos(e.touches[0].clientY)
+    }
+  }
+  function touchEnd() {
+    touching = false
+  }
 </script>
 
-<svelte:window on:mousemove={onMouse} on:mouseup={mouseUp} />
+<svelte:window
+  on:mousemove={onMouse}
+  on:mouseup={mouseUp}
+  on:touchmove={onTouch}
+  on:touchend={touchEnd}
+/>
 
-<div bind:this={parent} class="slider" on:mousedown={mouseDown}>
+<div
+  bind:this={parent}
+  class="slider"
+  on:mousedown={mouseDown}
+  on:touchstart|preventDefault={touchStart}
+>
   <div class="slider-track">
     <div
       class="slider-handle"
@@ -41,7 +71,9 @@
 
 <style lang="sass">
   .slider
-    width: 10px
+    width: 1.125rem
+    padding: 0rem 0.300rem
+    flex-shrink: 0
     user-select: none
     box-sizing: border-box
     position: relative
@@ -52,8 +84,9 @@
   .slider-handle
     width: 100%
     height: 4px
-    width: 10px
-    height: 10px
+    width: 1rem
+    height: 1rem
+    box-sizing: border-box
     border-radius: 100px
     left: 50%
     transform: translate(-50%, -50%)

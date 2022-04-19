@@ -25,14 +25,15 @@
     display: flex
     flex-direction: column
     align-items: center
-    color: #000000
     height: 100%
-    padding: 100px 0px
+    padding: 20px 0px
+    box-sizing: border-box
     font-family: Arial, Helvetica, sans-serif
     font-size: 16px
-    background-color: #ffffff
     transition: background-color, 200ms ease-out
-  .dark-mode
+    background-color: #ffffff
+    color: #000000
+  .center.dark-mode
     background-color: #111318
     --picker-background: #25272d
     color: #ffffff
