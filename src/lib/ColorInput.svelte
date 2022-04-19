@@ -52,19 +52,25 @@
   }
 </script>
 
-<div bind:this={parent} class="input" on:mousedown={open} on:focusout={focusout} tabindex="-1">
+<div
+  bind:this={parent}
+  class="input {classes}"
+  on:mousedown={open}
+  on:focusout={focusout}
+  tabindex="-1"
+>
   <div class="color-frame" style:background-color={color.toHex()} />
-  <span>
+  <div class="text">
     <input
-      class:hidden={!isOpen}
+      class:show={isOpen}
       bind:this={inputElement}
       type="text"
       bind:value={text}
       on:input={onInput}
       on:focus={open}
     />
-    <span class:hidden={isOpen} class="title">{title}</span>
-  </span>
+    <span class:show={!isOpen} class="title">{title}</span>
+  </div>
   <slot {isOpen}>
     <ColorPicker bind:color {isOpen} />
   </slot>
@@ -78,7 +84,7 @@
     align-items: center
     box-sizing: border-box
     border-radius: 4px
-    padding: 6px 10px
+    padding: 0px 10px
     background: var(--picker-background, #ffffff)
     border: 1px solid hsla(222, 14%, 47%, 0.3)
     box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.05)
@@ -89,7 +95,7 @@
     &:focus-within
       border-color: #0269f7
       box-shadow: 0px 0px 0px 3px rgba(2, 105, 247, 0.4)
-  span
+  .text
     position: relative
   .title
     position: absolute
@@ -97,12 +103,14 @@
     left: 0px
     width: 100%
     pointer-events: none
-    &.hidden
-      display: none
+    display: none
+    &.show
+      display: block
   .color-frame
     pointer-events: none
-    margin-right: 12px
     height: 20px
+    margin: 8px 0px
+    margin-right: 11px
     width: 38px
     flex-shrink: 0
     border-radius: 4px
@@ -118,9 +126,12 @@
     outline: none
     border: none
     padding: 0px
-    opacity: 1
-    cursor: text
-    &.hidden
-      opacity: 0
-      cursor: inherit
+    margin: 0px
+    opacity: 0
+    cursor: inherit
+    &:focus
+      box-shadow: none
+    &.show
+      opacity: 1
+      cursor: text
 </style>
