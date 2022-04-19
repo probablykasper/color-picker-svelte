@@ -43,12 +43,11 @@
   .slider
     width: 10px
     user-select: none
-    height: 100%
     box-sizing: border-box
     position: relative
   .slider-track
     height: 100%
-    border-radius: 100px
+    border-radius: 4px
     background: linear-gradient(hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%))
   .slider-handle
     width: 100%
@@ -60,4 +59,5 @@
     transform: translate(-50%, -50%)
     position: absolute
     border: 2px solid #ffffff
+    box-shadow: 0px 0px 3px 0px hsla(0, 0%, 0%, 0.5)
 </style>

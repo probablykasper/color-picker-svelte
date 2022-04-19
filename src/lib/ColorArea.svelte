@@ -2,6 +2,7 @@
   import { Color } from '$lib/color'
 
   export let color: Color
+  export let clientHeight = 0
 
   let hue = color.h
   $: if (color.s > 0 || color.v > 0) {
@@ -39,6 +40,7 @@
 
 <div
   bind:this={parent}
+  bind:clientHeight
   class="color-area"
   on:mousedown={mouseDown}
   style:--hue-color={`hsl(${Math.round(hue)},100%,50%)`}
@@ -57,12 +59,14 @@
     user-select: none
     height: 100%
     position: relative
+    border-radius: 4px
     background: linear-gradient(transparent, #000000), linear-gradient(0.25turn, #ffffff, transparent), var(--hue-color)
   .handle
     width: 14px
     height: 14px
     position: absolute
     transform: translate(-50%, -50%)
-    border: 2px solid #ffffff
     border-radius: 50%
+    border: 2px solid #ffffff
+    box-shadow: 0px 0px 3px 0px hsla(0, 0%, 0%, 0.5)
 </style>
