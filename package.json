@@ -1,0 +1,56 @@
+{
+  "name": "color-picker-svelte",
+  "version": "0.0.0",
+  "description": "Color picker for Svelte",
+  "type": "module",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit package && svelte-kit build",
+    "build:package": "svelte-kit package",
+    "build:site": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "lint": "prettier --plugin-search-dir=. --check src *.js && eslint src *.js && svelte-check",
+    "format": "prettier --plugin-search-dir=. --write src *.js && eslint --fix src *.js"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.29",
+    "@sveltejs/kit": "^1.0.0-next.315",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0",
+    "sass": "^1.50.1",
+    "svelte": "^3.47.0",
+    "svelte-check": "^2.7.0",
+    "svelte-preprocess": "^4.10.6",
+    "typescript": "^4.6.3"
+  },
+  "license": "MIT",
+  "homepage": "https://color-picker-svelte.kasper.space",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/probablykasper/color-picker-svelte.git"
+  },
+  "bugs": {
+    "url": "https://github.com/probablykasper/color-picker-svelte/issues"
+  },
+  "author": {
+    "name": "Kasper Henningsen",
+    "url": "https://kasper.space"
+  },
+  "keywords": [
+    "color",
+    "picker",
+    "color-picker",
+    "colorpicker",
+    "svelte"
+  ],
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true
+  }
+}
