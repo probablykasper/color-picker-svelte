@@ -7,11 +7,23 @@
   export let title = 'Color'
   export let isOpen = false
 
+  $: update(color)
+  function update(color: Color) {
+    if (color.h !== lastColor.h || color.s !== lastColor.s || color.v !== lastColor.v) {
+      text = color.toHex()
+      lastColor = new Color(color)
+    }
+  }
+
   let text = color.toHex()
+  let lastColor = new Color(color)
+
   function onInput() {
-    console.log(text)
     const tinyColor = new TinyColor(text)
-    color = new Color(tinyColor.toHsv())
+    if (tinyColor.isValid) {
+      color = new Color(tinyColor.toHsv())
+      lastColor = color
+    }
   }
 
   let parent: HTMLElement
