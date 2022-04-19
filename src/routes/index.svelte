@@ -3,7 +3,7 @@
   import ColorInput from '$lib/ColorInput.svelte'
   import { TinyColor } from '@ctrl/tinycolor'
 
-  let color = new Color('#00ff9d')
+  let color = new Color('#ff3d91')
   $: darkMode = !whiteForegroundWorks(color.toHex())
 
   export function whiteForegroundWorks(hex: string) {
@@ -34,4 +34,6 @@
     transition: background-color, 200ms ease-out
   .dark-mode
     background-color: #111318
+    --picker-background: #25272d
+    color: #ffffff
 </style>
