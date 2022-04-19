@@ -18,13 +18,13 @@
     top: 100%
     left: 0px
     display: flex
-    border: 1px solid rgb(229,231,235)
+    border: 1px solid hsla(222, 14%, 47%, 0.3)
     background-color: inherit
     border-radius: 5px
     box-sizing: border-box
     padding: 12px
     width: 100%
-    height: 170px
+    height: 200px
     // :global(.color-area)
     //   width: 170px
     //   height: 170px

@@ -76,16 +76,16 @@
     box-sizing: border-box
     border-radius: 4px
     padding: 6px 10px
-    background-color: #ffffff
-    border: 1px solid rgb(229,231,235)
+    background: var(--picker-background, #ffffff)
+    border: 1px solid hsla(222, 14%, 47%, 0.3)
     box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.05)
     position: relative
     user-select: none
     outline: none
     cursor: default
     &:focus-within
-      border-color: #4b6bec
-      box-shadow: 0px 0px 0px 3px hsla(219, 81%, 61%, 0.3)
+      border-color: #0269f7
+      box-shadow: 0px 0px 0px 3px rgba(2, 105, 247, 0.4)
   span
     position: relative
   .title
@@ -100,15 +100,17 @@
     pointer-events: none
     margin-right: 12px
     height: 20px
-    width: 40px
+    width: 38px
     flex-shrink: 0
     border-radius: 4px
-    border: 1px solid rgb(229,231,235)
+    border: 1px solid hsla(0, 0%, 100%, 0.3)
+    box-sizing: border-box
     box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.05)
   input
     color: inherit
     font-family: inherit
     font-size: inherit
+    background-color: transparent
     width: 100%
     outline: none
     border: none
