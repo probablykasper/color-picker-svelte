@@ -7,6 +7,9 @@
   export let title = 'Color'
   export let isOpen = false
 
+  let classes = ''
+  export { classes as class }
+
   $: update(color)
   function update(color: Color) {
     if (color.h !== lastColor.h || color.s !== lastColor.s || color.v !== lastColor.v) {
