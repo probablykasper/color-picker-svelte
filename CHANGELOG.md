@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix picker not hiding
+
 ## 0.4.0 - 2022 Aug 5
 - Add alpha support
 - **Breaking**: Change methods and properties of the `Color` class
