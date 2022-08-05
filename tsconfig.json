@@ -3,6 +3,7 @@
   "compilerOptions": {
     // Global types
     "types": ["@sveltejs/kit"],
+    "moduleResolution": "node",
 
     "module": "es2020"
   }
