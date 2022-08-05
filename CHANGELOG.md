@@ -1,7 +1,8 @@
 # Changelog
 
-## Next
+## 0.4.0 - 2022 Aug 5
 - Add alpha support
+- **Breaking**: Change methods and properties of the `Color` class
 
 ## 0.3.0 - 2022 Apr 19
 - Add mobile support
