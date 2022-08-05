@@ -6,19 +6,25 @@
   export let color: Color
   export let title = 'Color'
   export let isOpen = false
+  export let showAlphaSlider = false
 
   let classes = ''
   export { classes as class }
 
   $: update(color)
   function update(color: Color) {
-    if (color.h !== lastColor.h || color.s !== lastColor.s || color.v !== lastColor.v) {
-      text = color.toHex()
+    if (
+      color.h !== lastColor.h ||
+      color.s !== lastColor.s ||
+      color.v !== lastColor.v ||
+      color.a !== lastColor.a
+    ) {
+      text = color.a === 1 ? color.toHexString() : color.toHex8String()
       lastColor = new Color(color)
     }
   }
 
-  let text = color.toHex()
+  let text = color.a === 1 ? color.toHexString() : color.toHex8String()
   let lastColor = new Color(color)
 
   function onInput() {
@@ -59,7 +65,9 @@
   on:focusout={focusout}
   tabindex="-1"
 >
-  <div class="color-frame" style:background-color={color.toHex()} />
+  <div class="color-frame">
+    <div class="color-frame-color" style:background-color={color.toHex8String()} />
+  </div>
   <div class="text">
     <input
       class:show={isOpen}
@@ -72,7 +80,7 @@
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
   <slot {isOpen}>
-    <ColorPicker bind:color {isOpen} />
+    <ColorPicker bind:color {isOpen} {showAlphaSlider} />
   </slot>
 </div>
 
@@ -114,9 +122,17 @@
     width: 38px
     flex-shrink: 0
     border-radius: 4px
-    border: 1px solid hsla(0, 0%, 100%, 0.3)
     box-sizing: border-box
     box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.05)
+    background-image: repeating-conic-gradient(#cccccc 0 25%, #ffffff 0 50%)
+    background-size: 0.5rem 0.5rem
+    background-position: 0 0, 0.25rem 0.25rem
+    .color-frame-color
+      width: 100%
+      height: 100%
+      box-sizing: border-box
+      border-radius: inherit
+      border: 1px solid hsla(0, 0%, 100%, 0.3)
   input
     color: inherit
     font-family: inherit
@@ -129,6 +145,7 @@
     margin: 0px
     opacity: 0
     cursor: inherit
+    line-height: normal
     &:focus
       box-shadow: none
     &.show

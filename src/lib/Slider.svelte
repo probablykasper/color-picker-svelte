@@ -1,9 +1,12 @@
 <script lang="ts">
+  import type { Color } from './color'
   import { clamp } from './util'
 
   export let value: number
   export let max: number
-  export let backgroundColor: string | undefined = undefined
+  export let color: Color
+  export let handleColor: string | undefined = undefined
+  export let style: 'hue' | 'alpha'
 
   let parent: HTMLElement
 
@@ -59,19 +62,22 @@
   class="slider"
   on:mousedown={mouseDown}
   on:touchstart|preventDefault={touchStart}
+  class:hue={style === 'hue'}
+  class:alpha={style === 'alpha'}
+  style="--color:{color.toHexString()};"
 >
   <div class="slider-track">
-    <div
-      class="slider-handle"
-      style:top={(value / max) * 100 + '%'}
-      style:background-color={backgroundColor}
-    />
+    <div class="slider-track-overlay" />
   </div>
+  <div
+    class="slider-handle"
+    style:top={(value / max) * 100 + '%'}
+    style:background-color={handleColor}
+  />
 </div>
 
 <style lang="sass">
   .slider
-    width: 1.125rem
     padding: 0rem 0.300rem
     flex-shrink: 0
     user-select: none
@@ -79,8 +85,19 @@
     position: relative
   .slider-track
     height: 100%
+    width: 0.5rem
     border-radius: 4px
+  .hue .slider-track
     background: linear-gradient(hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%))
+  .alpha .slider-track
+    background-image: repeating-conic-gradient(#cccccc 0 25%, #ffffff 0 50%)
+    background-size: 0.5rem 0.5rem
+    background-position: 0 0, 0.25rem 0.25rem
+  .alpha .slider-track-overlay
+    width: 100%
+    height: 100%
+    background-image: linear-gradient(to bottom, transparent 0%, var(--color) 100%)
+    border-radius: inherit
   .slider-handle
     width: 100%
     height: 4px

@@ -5,4 +5,4 @@
   export let color: Color
 </script>
 
-<Slider bind:value={color.h} max={360} backgroundColor={`hsl(${color.h},100%,50%)`} />
+<Slider bind:value={color.h} {color} max={360} handleColor="hsl({color.h},100%,50%)" style="hue" />

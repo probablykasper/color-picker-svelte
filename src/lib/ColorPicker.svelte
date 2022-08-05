@@ -2,14 +2,19 @@
   import type { Color } from './color'
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
+  import AlphaSlider from './AlphaSlider.svelte'
 
   export let color: Color
   export let isOpen = false
+  export let showAlphaSlider = false
 </script>
 
 <div class="color-picker" class:hidden={!isOpen} on:touchstart|preventDefault>
   <ColorArea bind:color />
   <HueSlider bind:color />
+  {#if showAlphaSlider}
+    <AlphaSlider bind:color />
+  {/if}
 </div>
 
 <style lang="sass">

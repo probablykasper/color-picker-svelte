@@ -1,7 +1,10 @@
 # Changelog
 
+## Next
+- Add alpha support
+
 ## 0.3.0 - 2022 Apr 19
-- Mobile support
+- Add mobile support
 
 ## 0.2.0 - 2022 Apr 19
 - Add `class` prop to `ColorInput`

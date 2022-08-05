@@ -20,6 +20,7 @@
       h: hue,
       s: x / rect.width,
       v: 1 - y / rect.height,
+      a: color.a,
     })
   }
 
@@ -75,7 +76,7 @@
     class="handle"
     style:top={(1 - color.v) * 100 + '%'}
     style:left={color.s * 100 + '%'}
-    style:background-color={color.toHex()}
+    style:background-color={color.toHexString()}
   />
 </div>
 
