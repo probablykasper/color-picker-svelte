@@ -24,7 +24,16 @@
 <div class="center" class:dark-mode={darkMode}>
   <h1 style:color={color.toHex8String()}>Color Picker Svelte</h1>
 
-  <ColorInput bind:color bind:isOpen {showAlphaSlider} {title} --input-width="250px" />
+  <ColorInput
+    bind:color
+    bind:isOpen
+    {showAlphaSlider}
+    {title}
+    --input-width="250px"
+    onInput={() => {
+      console.log(1, color)
+    }}
+  />
 
   <div>
     <div class="row" style:margin-top="230px">

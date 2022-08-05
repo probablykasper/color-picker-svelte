@@ -2,6 +2,7 @@
 
 ## Next
 - Fix picker not hiding
+- Add `onInput` event
 
 ## 0.4.0 - 2022 Aug 5
 - Add alpha support

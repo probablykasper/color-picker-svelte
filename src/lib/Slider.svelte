@@ -7,6 +7,9 @@
   export let color: Color
   export let handleColor: string | undefined = undefined
   export let style: 'hue' | 'alpha'
+  export let onInput: (color: number) => void = () => {
+    /* noop */
+  }
 
   let parent: HTMLElement
 
@@ -15,6 +18,7 @@
     const y = clientY - rect.top
     const percentage = (value = y / rect.height)
     value = clamp(0, max, percentage * max)
+    onInput(value)
   }
 
   function onMouse(e: MouseEvent) {

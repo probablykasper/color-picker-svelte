@@ -3,6 +3,9 @@
 
   export let color: Color
   export let clientHeight = 0
+  export let onInput: (value: Color) => void = () => {
+    /* noop */
+  }
 
   let hue = color.h
   $: if (color.s > 0 || color.v > 0) {
@@ -22,6 +25,7 @@
       v: 1 - y / rect.height,
       a: color.a,
     })
+    onInput(color)
   }
 
   function onMouse(e: MouseEvent) {

@@ -7,6 +7,9 @@
   export let title = 'Color'
   export let isOpen = false
   export let showAlphaSlider = false
+  export let onInput = () => {
+    /* noop */
+  }
 
   let classes = ''
   export { classes as class }
@@ -27,12 +30,13 @@
   let text = color.a === 1 ? color.toHexString() : color.toHex8String()
   let lastColor = new Color(color)
 
-  function onInput() {
+  function textInputHandler() {
     const tinyColor = new TinyColor(text)
     if (tinyColor.isValid) {
       color = new Color(tinyColor.toHsv())
       lastColor = color
     }
+    onInput()
   }
 
   let parent: HTMLElement
@@ -74,13 +78,13 @@
       bind:this={inputElement}
       type="text"
       bind:value={text}
-      on:input={onInput}
+      on:input={textInputHandler}
       on:focus={open}
     />
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
   <slot {isOpen}>
-    <ColorPicker bind:color {isOpen} {showAlphaSlider} />
+    <ColorPicker bind:color {onInput} {isOpen} {showAlphaSlider} />
   </slot>
 </div>
 

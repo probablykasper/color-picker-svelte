@@ -7,13 +7,18 @@
   export let color: Color
   export let isOpen = false
   export let showAlphaSlider = false
+
+  export let onInput = () => {
+    /* noop */
+  }
+  $: color, onInput()
 </script>
 
 <div class="color-picker" class:hidden={!isOpen} on:touchstart|preventDefault>
-  <ColorArea bind:color />
-  <HueSlider bind:color />
+  <ColorArea bind:color {onInput} />
+  <HueSlider bind:color {onInput} />
   {#if showAlphaSlider}
-    <AlphaSlider bind:color />
+    <AlphaSlider bind:color {onInput} />
   {/if}
 </div>
 
