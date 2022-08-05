@@ -36,7 +36,9 @@
   }
 
   let parent: HTMLElement
-  function focusout(e: FocusEvent) {
+  function blur(e: FocusEvent) {
+    console.log('blur', e.relatedTarget, e.currentTarget, document.activeElement)
+
     if (e.relatedTarget === null) {
       isOpen = false
     } else if (e.relatedTarget instanceof HTMLElement) {
@@ -58,13 +60,7 @@
   }
 </script>
 
-<div
-  bind:this={parent}
-  class="input {classes}"
-  on:mousedown={open}
-  on:focusout={focusout}
-  tabindex="-1"
->
+<div bind:this={parent} class="input {classes}" on:mousedown={open} tabindex="-1">
   <div class="color-frame">
     <div class="color-frame-color" style:background-color={color.toHex8String()} />
   </div>
@@ -76,6 +72,7 @@
       bind:value={text}
       on:input={onInput}
       on:focus={open}
+      on:blur={blur}
     />
     <span class:show={!isOpen} class="title">{title}</span>
   </div>

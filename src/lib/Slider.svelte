@@ -90,7 +90,7 @@
   .hue .slider-track
     background: linear-gradient(hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%))
   .alpha .slider-track
-    background-image: repeating-conic-gradient(#cccccc 0 25%, #ffffff 0 50%)
+    background-image: repeating-conic-gradient(#bfbfbf 0 25%, #ffffff 0 50%)
     background-size: 0.5rem 0.5rem
     background-position: 0 0, 0.25rem 0.25rem
   .alpha .slider-track-overlay
