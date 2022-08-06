@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.5.0 - 2022 Aug 5
 - Add `onInput` event
 - Fix picker not hiding
 
