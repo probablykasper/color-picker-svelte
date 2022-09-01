@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.5.1 - 2022 Sep 1
 - Fix hue slider not working when bottom left corner is selected
 
 ## 0.5.0 - 2022 Aug 5
