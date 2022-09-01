@@ -11,8 +11,8 @@
   export function whiteForegroundWorks(hex: string) {
     return new TinyColor(hex).getBrightness() < 127.5
   }
-
-  $: darkMode = !whiteForegroundWorks(color.toHex8String())
+  $: hex = color.toHex8String()
+  $: darkMode = !whiteForegroundWorks(hex)
   $: setDarkMode(darkMode)
   function setDarkMode(darkMode: boolean) {
     if (typeof document !== 'undefined') {
@@ -21,22 +21,24 @@
   }
 </script>
 
-<div class="center" class:dark-mode={darkMode}>
-  <h1 style:color={color.toHex8String()}>Color Picker Svelte</h1>
+<div class="center">
+  <h1 style:color={hex} class:light-mode={!darkMode} style:--color={hex}>Color Picker Svelte</h1>
 
-  <ColorInput
-    bind:color
-    bind:isOpen
-    {showAlphaSlider}
-    {title}
-    --input-width="250px"
-    onInput={() => {
-      console.log(color)
-    }}
-  />
+  <div class="picker" class:dark-mode={darkMode}>
+    <ColorInput
+      bind:color
+      bind:isOpen
+      {showAlphaSlider}
+      {title}
+      --input-width="250px"
+      onInput={() => {
+        console.log(color)
+      }}
+    />
+  </div>
 
   <div>
-    <div class="row" style:margin-top="230px">
+    <div class="row" style:margin-top="220px">
       <span>showAlphaSlider</span>
       <input type="checkbox" bind:checked={showAlphaSlider} />
     </div>
@@ -54,22 +56,47 @@
 <style lang="sass">
   :global(html, body)
     margin: 0px
-  :global(html.dark-mode), .center.dark-mode
-    background-color: #111318
-    --picker-background: #25272d
-    color: #ffffff
+  .picker
+    --picker-background: #ffffff
+    color: #000000
+    &.dark-mode
+      --picker-background: #25272d
+      color: #ffffff
   .center
     display: flex
     flex-direction: column
     align-items: center
     min-height: 100vh
-    padding: 20px 0px
+    padding: 5px 0px
     box-sizing: border-box
     font-family: Arial, Helvetica, sans-serif
     font-size: 16px
-    transition: background-color, 200ms ease-out
-    background-color: #ffffff
-    color: #000000
+    background-color: #111318
+    color: #ffffff
+  h1
+    padding: 0px 7px
+    position: relative
+    margin: 30px 0px
+    z-index: 1
+    &::before
+      z-index: -1
+      content: ''
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 100%
+      height: 100%
+      transition: all 200ms ease-out
+      border-radius: 5px
+      opacity: 0
+      background-color: #ffffff
+      box-shadow: 0px 0px 0px 0px #ffffff, 0px 0px 0px 0px #ffffff
+    &.light-mode::before
+        opacity: 1
+        box-shadow: 0px 0px 0px 5px #ffffff, 0px 0px 10px 5px #ffffff
+    // &.dark-mode
+    //   padding: 0px 0px
+    //   background-color: transparent
   .row
     margin-top: 8px
     display: flex
