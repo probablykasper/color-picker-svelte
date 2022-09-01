@@ -7,6 +7,7 @@
   export let title = 'Color'
   export let isOpen = false
   export let showAlphaSlider = false
+  export let disabled = false
   export let onInput = () => {
     /* noop */
   }
@@ -52,8 +53,12 @@
   }
 
   let inputElement: HTMLInputElement
+  $: console.log('disbl', disabled)
+
   async function open(e: Event) {
-    if (!isOpen) {
+    if (!isOpen && !disabled) {
+      console.log('open')
+
       isOpen = true
       inputElement.focus()
       inputElement.select()
@@ -62,12 +67,14 @@
   }
 </script>
 
+<!-- tabindex=-1 to keep picker open when picker is clicked -->
 <div
   bind:this={parent}
   class="input {classes}"
+  class:disabled
   on:mousedown={open}
   on:focusout={focusout}
-  tabindex="-1"
+  tabindex={disabled ? null : -1}
 >
   <div class="color-frame">
     <div class="color-frame-color" style:background-color={color.toHex8String()} />
@@ -80,6 +87,7 @@
       bind:value={text}
       on:input={textInputHandler}
       on:focus={open}
+      {disabled}
     />
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
@@ -104,6 +112,8 @@
     user-select: none
     outline: none
     cursor: default
+    &.disabled
+      opacity: 0.5
     &:focus-within
       border-color: #0269f7
       box-shadow: 0px 0px 0px 3px rgba(2, 105, 247, 0.4)

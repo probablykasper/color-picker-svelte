@@ -7,6 +7,7 @@
   let showAlphaSlider = true
   let isOpen = false
   let title = 'Text color'
+  let disabled = false
 
   export function whiteForegroundWorks(hex: string) {
     return new TinyColor(hex).getBrightness() < 127.5
@@ -30,6 +31,7 @@
       bind:isOpen
       {showAlphaSlider}
       {title}
+      {disabled}
       --input-width="250px"
       onInput={() => {
         console.log(color)
@@ -43,12 +45,16 @@
       <input type="checkbox" bind:checked={showAlphaSlider} />
     </div>
     <div class="row">
+      <span>title</span>
+      <input type="text" bind:value={title} />
+    </div>
+    <div class="row">
       <span>isOpen</span>
       <input type="checkbox" bind:checked={isOpen} />
     </div>
     <div class="row">
-      <span>title</span>
-      <input type="text" bind:value={title} />
+      <span>disabled</span>
+      <input type="checkbox" bind:checked={disabled} />
     </div>
   </div>
 </div>
@@ -94,14 +100,25 @@
     &.light-mode::before
         opacity: 1
         box-shadow: 0px 0px 0px 5px #ffffff, 0px 0px 10px 5px #ffffff
-    // &.dark-mode
-    //   padding: 0px 0px
-    //   background-color: transparent
   .row
     margin-top: 8px
     display: flex
+    align-items: center
+    height: 24px
   span
     margin-right: 12px
   input
     margin-left: auto
+  input[type='text']
+    color: #ffffff
+    background-color: #25272d
+    border: 1px solid hsla(222deg, 14%, 47%, 0.3)
+    padding: 0px 8px
+    height: 24px
+    box-sizing: border-box
+    border-radius: 4px
+    &:focus
+      outline: none
+      border: 1px solid #0269f7
+      box-shadow: 0px 0px 0px 3px rgb(2 105 247 / 40%)
 </style>
