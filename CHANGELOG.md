@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0 - 2022 Sep 1
+- Add `disabled` property to `ColorInput`
+
 ## 0.5.1 - 2022 Sep 1
 - Fix hue slider not working when bottom left corner is selected
 
