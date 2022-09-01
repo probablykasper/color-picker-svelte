@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix hue slider not working when bottom left corner is selected
+
 ## 0.5.0 - 2022 Aug 5
 - Add `onInput` event
 - Fix picker not hiding

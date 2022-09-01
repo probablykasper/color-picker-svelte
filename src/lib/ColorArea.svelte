@@ -8,9 +8,7 @@
   }
 
   let hue = color.h
-  $: if (color.s > 0 || color.v > 0) {
-    hue = color.h
-  }
+  $: hue = color.h
 
   let parent: HTMLElement
 

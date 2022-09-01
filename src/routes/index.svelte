@@ -31,7 +31,7 @@
     {title}
     --input-width="250px"
     onInput={() => {
-      console.log(1, color)
+      console.log(color)
     }}
   />
 
