@@ -53,12 +53,9 @@
   }
 
   let inputElement: HTMLInputElement
-  $: console.log('disbl', disabled)
 
   async function open(e: Event) {
     if (!isOpen && !disabled) {
-      console.log('open')
-
       isOpen = true
       inputElement.focus()
       inputElement.select()
