@@ -7,9 +7,9 @@
 
 Color picker for Svelte
 
-[REPL](https://svelte.dev/repl/8b00804d417b4fe89f42f90d6ed485e7?version=3.47.0)
+[Demo](https://color-picker-svelte.kasper.space/) • [REPL](https://svelte.dev/repl/8b00804d417b4fe89f42f90d6ed485e7?version=3.49.0)
 
-![](Screenshot.png)
+![](Screenshot.jpg)
 
 ## Install
 

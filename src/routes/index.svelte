@@ -23,6 +23,12 @@
 </script>
 
 <div class="center">
+  <nav>
+    <a href="https://github.com/probablykasper/color-picker-svelte">GitHub</a>
+    <a href="https://npmjs.com/package/color-picker-svelte">npm</a>
+    <a href="https://svelte.dev/repl/8b00804d417b4fe89f42f90d6ed485e7?version=3.49.0">REPL</a>
+  </nav>
+
   <h1 style:color={hex} class:light-mode={!darkMode} style:--color={hex}>Color Picker Svelte</h1>
 
   <div class="picker" class:dark-mode={darkMode}>
@@ -32,7 +38,7 @@
       {showAlphaSlider}
       {title}
       {disabled}
-      --input-width="250px"
+      --input-width="260px"
       onInput={() => {
         console.log(color)
       }}
@@ -73,16 +79,27 @@
     flex-direction: column
     align-items: center
     min-height: 100vh
-    padding: 5px 0px
+    padding: 20px 0px
     box-sizing: border-box
     font-family: Arial, Helvetica, sans-serif
     font-size: 16px
     background-color: #111318
     color: #ffffff
+  nav
+    cursor: default
+    a
+      padding: 4px 2px
+      margin: 0px 2px
+      font-size: 16px
+      text-decoration: none
+      color: hsla(0, 100%, 100%, 0.75)
+      &:hover
+        color: #ffffff
   h1
     padding: 0px 7px
     position: relative
-    margin: 30px 0px
+    margin-top: 10px
+    margin-bottom: 30px
     z-index: 1
     &::before
       z-index: -1
