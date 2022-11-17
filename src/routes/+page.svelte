@@ -9,7 +9,7 @@
   let title = 'Text color'
   let disabled = false
 
-  export function whiteForegroundWorks(hex: string) {
+  function whiteForegroundWorks(hex: string) {
     return new TinyColor(hex).getBrightness() < 127.5
   }
   $: hex = color.toHex8String()
