@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `role` and `aria-label` accessibility attributes
+
 ## 1.0.0 - 2022 Sep 1
 - Add `disabled` property to `ColorInput`
 

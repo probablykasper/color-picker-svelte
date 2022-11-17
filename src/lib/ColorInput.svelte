@@ -72,6 +72,8 @@
   on:mousedown={open}
   on:focusout={focusout}
   tabindex={disabled ? null : -1}
+  role="button"
+  aria-label="Open color picker"
 >
   <div class="color-frame">
     <div class="color-frame-color" style:background-color={color.toHex8String()} />
