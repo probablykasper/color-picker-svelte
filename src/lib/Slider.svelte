@@ -16,7 +16,7 @@
   function pickPos(clientY: number) {
     const rect = parent.getBoundingClientRect()
     const y = clientY - rect.top
-    const percentage = (value = y / rect.height)
+    const percentage = y / rect.height
     value = clamp(0, max, percentage * max)
     onInput(value)
   }
@@ -103,8 +103,6 @@
     background-image: linear-gradient(to bottom, transparent 0%, var(--color) 100%)
     border-radius: inherit
   .slider-handle
-    width: 100%
-    height: 4px
     width: 1rem
     height: 1rem
     box-sizing: border-box
