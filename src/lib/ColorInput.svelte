@@ -2,6 +2,7 @@
   import { TinyColor } from '@ctrl/tinycolor'
   import { Color } from './color'
   import ColorPicker from './ColorPicker.svelte'
+  import { checkShortcut } from './util'
 
   export let color: Color
   export let title = 'Color'
@@ -52,13 +53,26 @@
     }
   }
 
+  function keydown(e: KeyboardEvent) {
+    if (checkShortcut(e, 'Escape')) {
+      isOpen = false
+    } else if (checkShortcut(e, 'Enter')) {
+      open()
+    }
+  }
+
   let inputElement: HTMLInputElement
 
-  async function open(e: Event) {
+  function open() {
     if (!isOpen && !disabled) {
       isOpen = true
       inputElement.focus()
       inputElement.select()
+      return true
+    }
+  }
+  function openAndPreventDefault(e: Event) {
+    if (open()) {
       e.preventDefault()
     }
   }
@@ -69,7 +83,8 @@
   bind:this={parent}
   class="input {classes}"
   class:disabled
-  on:mousedown={open}
+  on:mousedown={openAndPreventDefault}
+  on:keydown={keydown}
   on:focusout={focusout}
   tabindex={disabled ? null : -1}
   role="button"

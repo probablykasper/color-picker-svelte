@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `Escape` and `Enter` shortcuts
+
 ## 1.0.1 - 2022 Nov 18
 - Add `role` and `aria-label` accessibility attributes
 
