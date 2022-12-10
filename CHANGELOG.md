@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 1.1.0 - 2022 Dec 10
 - Add `Escape` and `Enter` shortcuts
 
 ## 1.0.1 - 2022 Nov 18
