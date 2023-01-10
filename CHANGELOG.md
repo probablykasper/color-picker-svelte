@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.1 - 2022 Jan 10
+- Fix missing dependency `@ctrl/tinycolor`
+
 ## 1.1.0 - 2022 Dec 10
 - Add `Escape` and `Enter` shortcuts
 
