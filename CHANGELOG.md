@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `AlphaSlider` component export
+
 ## 1.1.1 - 2022 Jan 10
 - Fix missing dependency `@ctrl/tinycolor`
 
