@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Open color picker if `ColorInput` is already focused when mounting
+
 ## v1.2.0 - 2023 Apr 17
 - Add `AlphaSlider` component export
 

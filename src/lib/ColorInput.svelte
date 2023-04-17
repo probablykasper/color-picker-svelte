@@ -76,6 +76,14 @@
       e.preventDefault()
     }
   }
+
+  function init(el: HTMLDivElement) {
+    console.log('init', document.activeElement, el)
+
+    if (document.activeElement === el) {
+      isOpen = true
+    }
+  }
 </script>
 
 <!-- tabindex=-1 to keep picker open when picker is clicked -->
@@ -102,6 +110,7 @@
       on:input={textInputHandler}
       on:focus={open}
       {disabled}
+      use:init
     />
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
