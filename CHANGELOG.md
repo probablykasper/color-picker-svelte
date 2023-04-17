@@ -1,11 +1,11 @@
 # Changelog
 
-## Next
+## 1.3.0 - 2023 Apr 18
 - Add auto positioning
 - Add `position` property
 - Open color picker if `ColorInput` is already focused when mounting
 
-## v1.2.0 - 2023 Apr 17
+## 1.2.0 - 2023 Apr 17
 - Add `AlphaSlider` component export
 
 ## 1.1.1 - 2022 Jan 10
