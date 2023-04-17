@@ -78,8 +78,6 @@
   }
 
   function init(el: HTMLDivElement) {
-    console.log('init', document.activeElement, el)
-
     if (document.activeElement === el) {
       isOpen = true
     }
@@ -115,7 +113,13 @@
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
   <slot {isOpen}>
-    <ColorPicker bind:color {onInput} {isOpen} {showAlphaSlider} />
+    <ColorPicker
+      positioningContextElement={inputElement}
+      bind:color
+      {onInput}
+      {isOpen}
+      {showAlphaSlider}
+    />
   </slot>
 </div>
 
