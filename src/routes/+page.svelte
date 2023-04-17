@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Position } from '$lib'
   import { Color } from '$lib/color'
   import ColorInput from '$lib/ColorInput.svelte'
   import { TinyColor } from '@ctrl/tinycolor'
@@ -8,6 +9,7 @@
   let isOpen = false
   let title = 'Text color'
   let disabled = false
+  let position = Position.Auto
 
   function whiteForegroundWorks(hex: string) {
     return new TinyColor(hex).getBrightness() < 127.5
@@ -35,6 +37,7 @@
     <ColorInput
       bind:color
       bind:isOpen
+      bind:position
       {showAlphaSlider}
       {title}
       {disabled}
@@ -61,6 +64,14 @@
     <div class="row">
       <span>disabled</span>
       <input type="checkbox" bind:checked={disabled} />
+    </div>
+    <div class="row">
+      <span>position</span>
+      <select bind:value={position}>
+        <option value={Position.Auto}>Auto</option>
+        <option value={Position.Above}>Above</option>
+        <option value={Position.Below}>Below</option>
+      </select>
     </div>
   </div>
 </div>
@@ -121,17 +132,29 @@
     margin-top: 8px
     display: flex
     align-items: center
-    height: 24px
+    height: 26px
   span
     margin-right: 12px
-  input
+  input, select
     margin-left: auto
   input[type='text']
     color: #ffffff
     background-color: #25272d
     border: 1px solid hsla(222deg, 14%, 47%, 0.3)
     padding: 0px 8px
-    height: 24px
+    height: 26px
+    box-sizing: border-box
+    border-radius: 4px
+    &:focus
+      outline: none
+      border: 1px solid #0269f7
+      box-shadow: 0px 0px 0px 3px rgb(2 105 247 / 40%)
+  select
+    color: #ffffff
+    background-color: #25272d
+    border: 1px solid hsla(222deg, 14%, 47%, 0.3)
+    padding: 0px 4px
+    height: 26px
     box-sizing: border-box
     border-radius: 4px
     &:focus

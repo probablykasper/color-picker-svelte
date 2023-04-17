@@ -3,6 +3,7 @@
   import { Color } from './color'
   import ColorPicker from './ColorPicker.svelte'
   import { checkShortcut } from './util'
+  import { Position } from '$lib'
 
   export let color: Color
   export let title = 'Color'
@@ -62,6 +63,7 @@
   }
 
   let inputElement: HTMLInputElement
+  export let position: Position = Position.Auto
 
   function open() {
     if (!isOpen && !disabled) {
@@ -118,6 +120,7 @@
       bind:color
       {onInput}
       {isOpen}
+      {position}
       {showAlphaSlider}
     />
   </slot>

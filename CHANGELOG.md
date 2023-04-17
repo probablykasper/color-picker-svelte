@@ -2,6 +2,7 @@
 
 ## Next
 - Add auto positioning
+- Add `position` property
 - Open color picker if `ColorInput` is already focused when mounting
 
 ## v1.2.0 - 2023 Apr 17

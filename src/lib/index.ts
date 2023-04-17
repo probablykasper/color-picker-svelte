@@ -8,6 +8,12 @@ export { default as Slider } from './Slider.svelte'
 
 export { Color } from './color'
 
+export const enum Position {
+  Auto,
+  Above,
+  Below,
+}
+
 /** Determines if `popupElement` should be shown above `positioningContextElement` */
 export function shouldShowAbove(popupElement: HTMLElement, positioningContextElement: HTMLElement) {
   const inputBounds = positioningContextElement.getBoundingClientRect()

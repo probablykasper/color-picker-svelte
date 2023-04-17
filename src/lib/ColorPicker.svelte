@@ -3,11 +3,12 @@
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
   import AlphaSlider from './AlphaSlider.svelte'
-  import { shouldShowAbove } from '$lib'
+  import { Position, shouldShowAbove } from '$lib'
 
   export let color: Color
   export let isOpen = false
   export let showAlphaSlider = false
+  export let position: Position = Position.Auto
   /** Element used to figure out position (probably an input element) */
   export let positioningContextElement: HTMLElement
   let pickerEl: HTMLDivElement | undefined
@@ -27,7 +28,7 @@
   <div
     bind:this={pickerEl}
     class="color-picker"
-    class:above={showAbove}
+    class:above={position === Position.Auto ? showAbove : position === Position.Above}
     class:hidden={!isOpen}
     on:touchstart|preventDefault
   >
