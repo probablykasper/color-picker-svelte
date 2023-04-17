@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## v1.2.0 - 2023 Apr 17
 - Add `AlphaSlider` component export
 
 ## 1.1.1 - 2022 Jan 10
