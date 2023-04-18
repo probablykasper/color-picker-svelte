@@ -14,6 +14,17 @@
     /* noop */
   }
 
+  export let onClose = () => {
+    /* noop */
+  }
+  let skipCloseEvent = !isOpen
+  $: if (!isOpen) {
+    if (!skipCloseEvent) {
+      onClose()
+    }
+    skipCloseEvent = false
+  }
+
   let classes = ''
   export { classes as class }
 

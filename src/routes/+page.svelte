@@ -45,6 +45,9 @@
       onInput={() => {
         console.log(color)
       }}
+      onClose={() => {
+        console.log('onClose')
+      }}
     />
   </div>
 

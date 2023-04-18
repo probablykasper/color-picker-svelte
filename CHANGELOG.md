@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `onClose` event
+
 ## 1.3.0 - 2023 Apr 18
 - Add auto positioning
 - Add `position` property
