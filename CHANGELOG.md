@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 1.4.0 - 2023 Apr 18
 - Add `onClose` event
 
 ## 1.3.0 - 2023 Apr 18
