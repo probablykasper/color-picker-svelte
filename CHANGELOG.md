@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix warnings about missing `package.json` exports conditions
+
 ## 1.4.0 - 2023 Apr 18
 - Add `onClose` event
 

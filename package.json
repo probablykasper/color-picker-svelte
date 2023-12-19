@@ -15,7 +15,7 @@
   "devDependencies": {
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.15.7",
-    "@sveltejs/package": "^1.0.2",
+    "@sveltejs/package": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "eslint": "^8.38.0",
@@ -58,5 +58,86 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.5.0"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./AlphaSlider.svelte": {
+      "types": "./dist/AlphaSlider.svelte.d.ts",
+      "svelte": "./dist/AlphaSlider.svelte",
+      "default": "./dist/AlphaSlider.svelte"
+    },
+    "./ColorArea.svelte": {
+      "types": "./dist/ColorArea.svelte.d.ts",
+      "svelte": "./dist/ColorArea.svelte",
+      "default": "./dist/ColorArea.svelte"
+    },
+    "./ColorInput.svelte": {
+      "types": "./dist/ColorInput.svelte.d.ts",
+      "svelte": "./dist/ColorInput.svelte",
+      "default": "./dist/ColorInput.svelte"
+    },
+    "./ColorPicker.svelte": {
+      "types": "./dist/ColorPicker.svelte.d.ts",
+      "svelte": "./dist/ColorPicker.svelte",
+      "default": "./dist/ColorPicker.svelte"
+    },
+    "./HueSlider.svelte": {
+      "types": "./dist/HueSlider.svelte.d.ts",
+      "svelte": "./dist/HueSlider.svelte",
+      "default": "./dist/HueSlider.svelte"
+    },
+    "./Slider.svelte": {
+      "types": "./dist/Slider.svelte.d.ts",
+      "svelte": "./dist/Slider.svelte",
+      "default": "./dist/Slider.svelte"
+    },
+    "./color": {
+      "types": "./dist/color.d.ts",
+      "default": "./dist/color.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./util": {
+      "types": "./dist/util.d.ts",
+      "default": "./dist/util.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "svelte": "./dist/index.js",
+  "typesVersions": {
+    ">4.0": {
+      "AlphaSlider.svelte": [
+        "./dist/AlphaSlider.svelte.d.ts"
+      ],
+      "ColorArea.svelte": [
+        "./dist/ColorArea.svelte.d.ts"
+      ],
+      "ColorInput.svelte": [
+        "./dist/ColorInput.svelte.d.ts"
+      ],
+      "ColorPicker.svelte": [
+        "./dist/ColorPicker.svelte.d.ts"
+      ],
+      "HueSlider.svelte": [
+        "./dist/HueSlider.svelte.d.ts"
+      ],
+      "Slider.svelte": [
+        "./dist/Slider.svelte.d.ts"
+      ],
+      "color": [
+        "./dist/color.d.ts"
+      ],
+      "index.d.ts": [
+        "./dist/index.d.ts"
+      ],
+      "util": [
+        "./dist/util.d.ts"
+      ]
+    }
   }
 }
