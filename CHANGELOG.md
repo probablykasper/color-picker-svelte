@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 1.4.1 - 2023 Dec 19
 - Fix warnings about missing `package.json` exports conditions
 - Add Svelte peerDependency
 
