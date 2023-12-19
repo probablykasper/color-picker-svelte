@@ -63,6 +63,10 @@
 
 <div
   bind:this={parent}
+  role="slider"
+  aria-valuenow={value}
+  aria-valuemax={max}
+  tabindex="-1"
   class="slider"
   on:mousedown={mouseDown}
   on:touchstart|preventDefault={touchStart}

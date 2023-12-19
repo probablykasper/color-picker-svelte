@@ -66,6 +66,7 @@
   on:touchend={touchEnd}
 />
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
   bind:this={parent}
   bind:clientHeight
