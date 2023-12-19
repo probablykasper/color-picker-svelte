@@ -2,6 +2,7 @@
 
 ## Next
 - Fix warnings about missing `package.json` exports conditions
+- Add Svelte peerDependency
 
 ## 1.4.0 - 2023 Apr 18
 - Add `onClose` event
