@@ -110,7 +110,7 @@
   aria-label="Open color picker"
 >
   <div class="color-frame">
-    <div class="color-frame-color" style:background-color={color.toHex8String()} />
+    <div class="color-frame-color" style:background-color={color.toHex8String()}></div>
   </div>
   <div class="text">
     <input

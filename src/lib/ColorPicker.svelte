@@ -16,7 +16,7 @@
   export let onInput = () => {
     /* noop */
   }
-  $: color, onInput()
+  $: if (color) onInput()
 
   let showAbove = false
   $: if (pickerEl && positioningContextElement) {

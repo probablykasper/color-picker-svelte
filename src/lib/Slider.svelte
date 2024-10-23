@@ -75,13 +75,13 @@
   style="--color:{color.toHexString()};"
 >
   <div class="slider-track">
-    <div class="slider-track-overlay" />
+    <div class="slider-track-overlay"></div>
   </div>
   <div
     class="slider-handle"
     style:top={(value / max) * 100 + '%'}
     style:background-color={handleColor}
-  />
+  ></div>
 </div>
 
 <style lang="sass">

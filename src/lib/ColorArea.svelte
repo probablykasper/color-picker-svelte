@@ -80,7 +80,7 @@
     style:top={(1 - color.v) * 100 + '%'}
     style:left={color.s * 100 + '%'}
     style:background-color={color.toHexString()}
-  />
+  ></div>
 </div>
 
 <style lang="sass">
