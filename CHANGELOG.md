@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Update `@ctrl/tinycolor` dependency to v4
+
 ## 1.5.0 - 2024 Oct 23
 - Add Svelte 5 support
 
