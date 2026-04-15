@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { Color } from './color.svelte.ts'
+  import type { Color } from './color.svelte.js'
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
   import AlphaSlider from './AlphaSlider.svelte'
-  import { Position, shouldShowAbove } from '$lib/index.ts'
+  import { Position, shouldShowAbove } from '$lib/index.js'
 
   let pickerEl: HTMLDivElement | undefined = $state()
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Position } from '$lib/index.ts'
-  import { Color } from '$lib/color.svelte.ts'
+  import { Position } from '$lib/index.js'
+  import { Color } from '$lib/color.svelte.js'
   import ColorInput from '$lib/ColorInput.svelte'
   import { TinyColor } from '@ctrl/tinycolor'
 

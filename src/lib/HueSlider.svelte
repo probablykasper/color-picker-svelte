@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Color } from '$lib/color.svelte.ts'
+  import type { Color } from '$lib/color.svelte.js'
   import Slider from './Slider.svelte'
 
   interface Props {

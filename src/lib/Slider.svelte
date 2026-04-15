@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Color } from './color.svelte.ts'
-  import { clamp } from './util.ts'
+  import type { Color } from './color.svelte.js'
+  import { clamp } from './util.js'
 
   interface Props {
     value: number

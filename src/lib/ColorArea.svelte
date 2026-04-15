@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Color } from '$lib/color.svelte.ts'
+  import { Color } from '$lib/color.svelte.js'
 
   interface Props {
     color: Color
