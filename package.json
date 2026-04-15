@@ -102,8 +102,8 @@
       "default": "./dist/Slider.svelte"
     },
     "./color": {
-      "types": "./dist/color.d.ts",
-      "default": "./dist/color.js"
+      "types": "./dist/color.svelte.d.ts",
+      "default": "./dist/color.svelte.js"
     },
     ".": {
       "types": "./dist/index.d.ts",
@@ -141,7 +141,7 @@
         "./dist/Slider.svelte.d.ts"
       ],
       "color": [
-        "./dist/color.d.ts"
+        "./dist/color.svelte.d.ts"
       ],
       "index.d.ts": [
         "./dist/index.d.ts"
