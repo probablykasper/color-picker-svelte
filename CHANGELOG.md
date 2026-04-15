@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix exports map
+
 ## 2.0.0 - 2026 Apr 16
 - Require Svelte 5
 - Update components to Svelte 5 runes syntax
