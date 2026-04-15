@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { Color } from './color'
+  import type { Color } from './color.ts'
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
   import AlphaSlider from './AlphaSlider.svelte'
-  import { Position, shouldShowAbove } from '$lib'
+  import { Position, shouldShowAbove } from '$lib/index.ts'
 
   export let color: Color
   export let isOpen = false

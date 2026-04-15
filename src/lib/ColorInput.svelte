@@ -1,9 +1,9 @@
 <script lang="ts">
   import { TinyColor } from '@ctrl/tinycolor'
-  import { Color } from './color'
+  import { Color } from './color.ts'
   import ColorPicker from './ColorPicker.svelte'
-  import { checkShortcut } from './util'
-  import { Position } from '$lib'
+  import { checkShortcut } from './util.ts'
+  import { Position } from '$lib/index.ts'
 
   export let color: Color
   export let title = 'Color'
@@ -17,12 +17,10 @@
   export let onClose = () => {
     /* noop */
   }
-  let skipCloseEvent = !isOpen
-  $: if (!isOpen) {
-    if (!skipCloseEvent) {
-      onClose()
-    }
-    skipCloseEvent = false
+  let wasOpened = false
+  $: wasOpened = isOpen || wasOpened
+  $: if (!isOpen && wasOpened) {
+    onClose()
   }
 
   let classes = ''

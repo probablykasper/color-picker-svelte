@@ -1,5 +1,5 @@
 import { TinyColor } from '@ctrl/tinycolor'
-import { clamp } from './util'
+import { clamp } from './util.ts'
 
 type Hsv = {
   h: number

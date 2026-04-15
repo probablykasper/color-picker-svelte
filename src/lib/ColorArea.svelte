@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Color } from '$lib/color'
+  import { Color } from '$lib/color.ts'
 
   export let color: Color
   export let clientHeight = 0

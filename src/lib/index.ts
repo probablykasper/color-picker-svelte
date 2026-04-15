@@ -6,7 +6,7 @@ export { default as AlphaSlider } from './AlphaSlider.svelte'
 export { default as ColorArea } from './ColorArea.svelte'
 export { default as Slider } from './Slider.svelte'
 
-export { Color } from './color'
+export { Color } from './color.ts'
 
 export const enum Position {
   Auto,

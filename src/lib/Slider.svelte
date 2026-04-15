@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Color } from './color'
-  import { clamp } from './util'
+  import type { Color } from './color.ts'
+  import { clamp } from './util.ts'
 
   export let value: number
   export let max: number

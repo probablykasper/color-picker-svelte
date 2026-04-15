@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Color } from '$lib/color'
+  import type { Color } from '$lib/color.ts'
   import Slider from './Slider.svelte'
 
   export let color: Color
