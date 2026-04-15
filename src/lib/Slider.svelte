@@ -1,19 +1,33 @@
 <script lang="ts">
-  import type { Color } from './color.ts'
+  import type { Color } from './color.svelte.ts'
   import { clamp } from './util.ts'
 
-  export let value: number
-  export let max: number
-  export let color: Color
-  export let handleColor: string | undefined = undefined
-  export let style: 'hue' | 'alpha'
-  export let onInput: (color: number) => void = () => {
-    /* noop */
+  interface Props {
+    value: number
+    max: number
+    color: Color
+    handleColor?: string | undefined
+    style: 'hue' | 'alpha'
+    onInput?: (color: number) => void
   }
 
-  let parent: HTMLElement
+  let {
+    value = $bindable(),
+    max,
+    color,
+    handleColor = undefined,
+    style,
+    onInput = () => {
+      /* noop */
+    },
+  }: Props = $props()
+
+  let parent: HTMLElement | undefined = $state()
 
   function pickPos(clientY: number) {
+    if (!parent) {
+      return
+    }
     const rect = parent.getBoundingClientRect()
     const y = clientY - rect.top
     const percentage = y / rect.height
@@ -44,6 +58,7 @@
     }
   }
   function touchStart(e: TouchEvent) {
+    e.preventDefault()
     if (e.touches.length === 1) {
       touching = true
       pickPos(e.touches[0].clientY)
@@ -55,10 +70,10 @@
 </script>
 
 <svelte:window
-  on:mousemove={onMouse}
-  on:mouseup={mouseUp}
-  on:touchmove={onTouch}
-  on:touchend={touchEnd}
+  onmousemove={onMouse}
+  onmouseup={mouseUp}
+  ontouchmove={onTouch}
+  ontouchend={touchEnd}
 />
 
 <div
@@ -68,8 +83,8 @@
   aria-valuemax={max}
   tabindex="-1"
   class="slider"
-  on:mousedown={mouseDown}
-  on:touchstart|preventDefault={touchStart}
+  onmousedown={mouseDown}
+  ontouchstart={touchStart}
   class:hue={style === 'hue'}
   class:alpha={style === 'alpha'}
   style="--color:{color.toHexString()};"

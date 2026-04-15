@@ -1,18 +1,28 @@
 <script lang="ts">
-  import { Color } from '$lib/color.ts'
+  import { Color } from '$lib/color.svelte.ts'
 
-  export let color: Color
-  export let clientHeight = 0
-  export let onInput: (value: Color) => void = () => {
-    /* noop */
+  interface Props {
+    color: Color
+    clientHeight?: number
+    onInput?: (value: Color) => void
   }
 
-  let hue = color.h
-  $: hue = color.h
+  let {
+    color = $bindable(),
+    clientHeight = $bindable(0),
+    onInput = () => {
+      /* noop */
+    },
+  }: Props = $props()
 
-  let parent: HTMLElement
+  let hue = $derived(color.h)
+
+  let parent: HTMLElement | undefined = $state()
 
   function pickPos(clientX: number, clientY: number) {
+    if (!parent) {
+      return
+    }
     const rect = parent.getBoundingClientRect()
     const x = clientX - rect.left
     const y = clientY - rect.top
@@ -49,6 +59,7 @@
     }
   }
   function touchStart(e: TouchEvent) {
+    e.preventDefault()
     if (e.touches.length === 1) {
       touching = true
       pickPos(e.touches[0].clientX, e.touches[0].clientY)
@@ -60,19 +71,19 @@
 </script>
 
 <svelte:window
-  on:mousemove={onMouse}
-  on:mouseup={mouseUp}
-  on:touchmove={onTouch}
-  on:touchend={touchEnd}
+  onmousemove={onMouse}
+  onmouseup={mouseUp}
+  ontouchmove={onTouch}
+  ontouchend={touchEnd}
 />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   bind:this={parent}
   bind:clientHeight
   class="color-area"
-  on:mousedown={mouseDown}
-  on:touchstart|preventDefault={touchStart}
+  onmousedown={mouseDown}
+  ontouchstart={touchStart}
   style:--hue-color={`hsl(${Math.round(hue)},100%,50%)`}
 >
   <div

@@ -1,33 +1,52 @@
 <script lang="ts">
   import { TinyColor } from '@ctrl/tinycolor'
-  import { Color } from './color.ts'
+  import { Color } from './color.svelte.ts'
   import ColorPicker from './ColorPicker.svelte'
   import { checkShortcut } from './util.ts'
   import { Position } from '$lib/index.ts'
+  import type { Snippet } from 'svelte'
 
-  export let color: Color
-  export let title = 'Color'
-  export let isOpen = false
-  export let showAlphaSlider = false
-  export let disabled = false
-  export let onInput = () => {
+  let inputElement: HTMLInputElement | undefined = $state()
+  interface Props {
+    color: Color
+    title?: string
+    isOpen?: boolean
+    showAlphaSlider?: boolean
+    disabled?: boolean
+    onInput?: () => void
     /* noop */
+    onClose?: () => void
+    class?: string
+    position?: Position
+    children?: Snippet<[{ isOpen: boolean }]>
   }
 
-  export let onClose = () => {
-    /* noop */
-  }
-  let wasOpened = false
-  $: wasOpened = isOpen || wasOpened
-  $: if (!isOpen && wasOpened) {
-    onClose()
-  }
+  let {
+    color = $bindable(),
+    title = 'Color',
+    isOpen = $bindable(false),
+    showAlphaSlider = false,
+    disabled = false,
+    onInput = () => {
+      /* noop */
+    },
+    onClose = () => {
+      /* noop */
+    },
+    class: classes = '',
+    position = $bindable(Position.Auto),
+    children,
+  }: Props = $props()
 
-  let classes = ''
-  export { classes as class }
+  let wasOpen = isOpen
+  $effect(() => {
+    if (wasOpen === true && isOpen === false) {
+      onClose()
+    }
+    wasOpen = isOpen
+  })
 
-  $: update(color)
-  function update(color: Color) {
+  $effect(() => {
     if (
       color.h !== lastColor.h ||
       color.s !== lastColor.s ||
@@ -37,9 +56,9 @@
       text = color.a === 1 ? color.toHexString() : color.toHex8String()
       lastColor = new Color(color)
     }
-  }
+  })
 
-  let text = color.a === 1 ? color.toHexString() : color.toHex8String()
+  let text = $state(color.a === 1 ? color.toHexString() : color.toHex8String())
   let lastColor = new Color(color)
 
   function textInputHandler() {
@@ -51,12 +70,12 @@
     onInput()
   }
 
-  let parent: HTMLElement
+  let parent: HTMLElement | undefined = $state()
   function focusout(e: FocusEvent) {
     if (e.relatedTarget === null) {
       isOpen = false
     } else if (e.relatedTarget instanceof HTMLElement) {
-      const stayingInParent = parent.contains(e.relatedTarget)
+      const stayingInParent = parent?.contains(e.relatedTarget)
       if (!stayingInParent) {
         isOpen = false
       }
@@ -71,14 +90,11 @@
     }
   }
 
-  let inputElement: HTMLInputElement
-  export let position: Position = Position.Auto
-
   function open() {
     if (!isOpen && !disabled) {
       isOpen = true
-      inputElement.focus()
-      inputElement.select()
+      inputElement?.focus()
+      inputElement?.select()
       return true
     }
   }
@@ -100,9 +116,9 @@
   bind:this={parent}
   class="input {classes}"
   class:disabled
-  on:mousedown={openAndPreventDefault}
-  on:keydown={keydown}
-  on:focusout={focusout}
+  onmousedown={openAndPreventDefault}
+  onkeydown={keydown}
+  onfocusout={focusout}
   tabindex={disabled ? null : -1}
   role="button"
   aria-label="Open color picker"
@@ -116,14 +132,16 @@
       bind:this={inputElement}
       type="text"
       bind:value={text}
-      on:input={textInputHandler}
-      on:focus={open}
+      oninput={textInputHandler}
+      onfocus={open}
       {disabled}
       use:init
     />
     <span class:show={!isOpen} class="title">{title}</span>
   </div>
-  <slot {isOpen}>
+  {#if children}
+    {@render children({ isOpen })}
+  {:else}
     <ColorPicker
       positioningContextElement={inputElement}
       bind:color
@@ -132,7 +150,7 @@
       {position}
       {showAlphaSlider}
     />
-  </slot>
+  {/if}
 </div>
 
 <style lang="sass">

@@ -1,27 +1,27 @@
 <script lang="ts">
   import { Position } from '$lib/index.ts'
-  import { Color } from '$lib/color.ts'
+  import { Color } from '$lib/color.svelte.ts'
   import ColorInput from '$lib/ColorInput.svelte'
   import { TinyColor } from '@ctrl/tinycolor'
 
-  let color = new Color('#ff3d91')
-  let showAlphaSlider = true
-  let isOpen = false
-  let title = 'Text color'
-  let disabled = false
-  let position = Position.Auto
+  let color = $state(new Color('#ff3d91'))
+  let showAlphaSlider = $state(true)
+  let isOpen = $state(false)
+  let title = $state('Text color')
+  let disabled = $state(false)
+  let position = $state(Position.Auto)
 
   function whiteForegroundWorks(hex: string) {
     return new TinyColor(hex).getBrightness() < 127.5
   }
-  $: hex = color.toHex8String()
-  $: darkMode = !whiteForegroundWorks(hex)
-  $: setDarkMode(darkMode)
-  function setDarkMode(darkMode: boolean) {
+
+  let hex = $derived(color.toHex8String())
+  let darkMode = $derived(!whiteForegroundWorks(hex))
+  $effect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.classList.toggle('dark-mode', darkMode)
     }
-  }
+  })
 </script>
 
 <div class="center">

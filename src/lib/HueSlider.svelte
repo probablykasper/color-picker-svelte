@@ -1,11 +1,18 @@
 <script lang="ts">
-  import type { Color } from '$lib/color.ts'
+  import type { Color } from '$lib/color.svelte.ts'
   import Slider from './Slider.svelte'
 
-  export let color: Color
-  export let onInput: (color: number) => void = () => {
-    /* noop */
+  interface Props {
+    color: Color
+    onInput?: (color: number) => void /* noop */
   }
+
+  let {
+    color = $bindable(),
+    onInput = () => {
+      /* noop */
+    },
+  }: Props = $props()
 </script>
 
 <Slider

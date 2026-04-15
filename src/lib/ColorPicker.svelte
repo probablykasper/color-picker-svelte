@@ -1,27 +1,42 @@
 <script lang="ts">
-  import type { Color } from './color.ts'
+  import type { Color } from './color.svelte.ts'
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
   import AlphaSlider from './AlphaSlider.svelte'
   import { Position, shouldShowAbove } from '$lib/index.ts'
 
-  export let color: Color
-  export let isOpen = false
-  export let showAlphaSlider = false
-  export let position: Position = Position.Auto
-  /** Element used to figure out position (probably an input element) */
-  export let positioningContextElement: HTMLElement
-  let pickerEl: HTMLDivElement | undefined
+  let pickerEl: HTMLDivElement | undefined = $state()
 
-  export let onInput = () => {
-    /* noop */
+  interface Props {
+    color: Color
+    isOpen?: boolean
+    showAlphaSlider?: boolean
+    position?: Position
+    /** Element used to figure out position (probably an input element) */
+    positioningContextElement: HTMLElement
+    onInput?: () => void
   }
-  $: if (color) onInput()
 
-  let showAbove = false
-  $: if (pickerEl && positioningContextElement) {
-    showAbove = shouldShowAbove(pickerEl, positioningContextElement)
-  }
+  let {
+    color = $bindable(),
+    isOpen = false,
+    showAlphaSlider = false,
+    position = Position.Auto,
+    positioningContextElement,
+    onInput = () => {
+      /* noop */
+    },
+  }: Props = $props()
+  $effect(() => {
+    if (color) onInput()
+  })
+
+  let showAbove = $derived.by(() => {
+    if (!pickerEl) {
+      return false
+    }
+    shouldShowAbove(pickerEl, positioningContextElement)
+  })
 </script>
 
 {#if isOpen}
@@ -31,7 +46,9 @@
     class="color-picker"
     class:above={position === Position.Auto ? showAbove : position === Position.Above}
     class:hidden={!isOpen}
-    on:touchstart|preventDefault
+    ontouchstart={(e) => {
+      e.preventDefault()
+    }}
   >
     <ColorArea bind:color {onInput} />
     <HueSlider bind:color {onInput} />

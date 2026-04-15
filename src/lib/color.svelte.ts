@@ -14,18 +14,16 @@ export class Color {
   v: number
   a: number
   constructor(value: string | Hsv) {
+    let hsv
     if (typeof value === 'string') {
-      const hsv = new TinyColor(value).toHsv()
-      this.h = hsv.h
-      this.s = hsv.s
-      this.v = hsv.v
-      this.a = hsv.a
+      hsv = new TinyColor(value).toHsv()
     } else {
-      this.h = clamp(0, 360, value.h)
-      this.s = clamp(0, 1, value.s)
-      this.v = clamp(0, 1, value.v)
-      this.a = clamp(0, 1, value.a)
+      hsv = value
     }
+    this.h = $state(clamp(0, 360, hsv.h))
+    this.s = $state(clamp(0, 1, hsv.s))
+    this.v = $state(clamp(0, 1, hsv.v))
+    this.a = $state(clamp(0, 1, hsv.a))
   }
   toHexString() {
     return new TinyColor({ h: this.h, s: this.s, v: this.v }).toHexString()
