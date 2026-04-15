@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 2.0.1 - 2026 Apr 16
 - Fix exports map
 
 ## 2.0.0 - 2026 Apr 16
