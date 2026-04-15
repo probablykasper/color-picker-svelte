@@ -12,23 +12,29 @@
     "format": "prettier --write src *.js && eslint --fix src *.js"
   },
   "devDependencies": {
+    "@eslint/compat": "^2.0.5",
+    "@eslint/js": "^10.0.1",
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/kit": "^2.57.1",
     "@sveltejs/package": "^2.5.7",
-    "@sveltejs/vite-plugin-svelte": "^4.0.4",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^9.1.2",
-    "eslint-plugin-svelte": "^2.46.1",
+    "@sveltejs/vite-plugin-svelte": "^7.0.0",
+    "@types/node": "^24.12.2",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.17.0",
+    "globals": "^17.5.0",
     "prettier": "^3.8.3",
     "prettier-plugin-svelte": "^3.5.1",
-    "publint": "^0.2.12",
+    "publint": "^0.3.18",
     "sass": "^1.99.0",
     "svelte": "^5.55.4",
     "svelte-check": "^4.4.6",
-    "svelte-preprocess": "^6.0.3",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.2",
-    "vite": "^5.4.21"
+    "vite": "^8.0.8"
+  },
+  "dependencies": {
+    "@ctrl/tinycolor": "^4.0.0"
   },
   "peerDependencies": {
     "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0"
@@ -61,9 +67,8 @@
       "prettier-plugin-svelte"
     ]
   },
-  "dependencies": {
-    "@ctrl/tinycolor": "^4.0.0"
-  },
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     "./AlphaSlider.svelte": {
@@ -115,7 +120,6 @@
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*"
   ],
-  "svelte": "./dist/index.js",
   "typesVersions": {
     ">4.0": {
       "AlphaSlider.svelte": [
