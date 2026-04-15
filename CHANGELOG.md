@@ -1,6 +1,7 @@
 # Changelog
 
 ## Next
+- Require Svelte 5
 - Update components to Svelte 5 runes syntax
 - Update `@ctrl/tinycolor` dependency to v4
 
