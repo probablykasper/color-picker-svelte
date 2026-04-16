@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 2.0.2 - 2026 Apr 16
 - Fix component "is not defined" error due to circular imports
 
 ## 2.0.1 - 2026 Apr 16
