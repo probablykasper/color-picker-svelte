@@ -2,8 +2,8 @@
   import { TinyColor } from '@ctrl/tinycolor'
   import { Color } from './color.svelte.js'
   import ColorPicker from './ColorPicker.svelte'
-  import { checkShortcut } from './util.js'
-  import { Position } from '$lib/index.js'
+  import { checkShortcut } from './utils.js'
+  import { Position } from './utils.js'
   import type { Snippet } from 'svelte'
 
   let inputElement: HTMLInputElement | undefined = $state()

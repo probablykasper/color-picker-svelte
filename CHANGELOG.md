@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix component "is not defined" error due to circular imports
+
 ## 2.0.1 - 2026 Apr 16
 - Fix exports map
 

@@ -8,18 +8,4 @@ export { default as Slider } from './Slider.svelte'
 
 export { Color } from './color.svelte.js'
 
-export const enum Position {
-  Auto,
-  Above,
-  Below,
-}
-
-/** Determines if `popupElement` should be shown above `positioningContextElement` */
-export function shouldShowAbove(popupElement: HTMLElement, positioningContextElement: HTMLElement) {
-  const inputBounds = positioningContextElement.getBoundingClientRect()
-  const spaceAbove = inputBounds.top
-  const spaceBelow = window.innerHeight - (inputBounds.top + inputBounds.height)
-  const enoughSpaceAbove = spaceAbove > popupElement.clientHeight
-  const enoughSpaceBelow = spaceBelow > popupElement.clientHeight
-  return !enoughSpaceBelow && enoughSpaceAbove
-}
+export { Position, shouldShowAbove } from './utils.js'

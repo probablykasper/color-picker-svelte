@@ -8,6 +8,22 @@ export function clamp(min: number, max: number, x: number): number {
   }
 }
 
+export const enum Position {
+  Auto,
+  Above,
+  Below,
+}
+
+/** Determines if `popupElement` should be shown above `positioningContextElement` */
+export function shouldShowAbove(popupElement: HTMLElement, positioningContextElement: HTMLElement) {
+  const inputBounds = positioningContextElement.getBoundingClientRect()
+  const spaceAbove = inputBounds.top
+  const spaceBelow = window.innerHeight - (inputBounds.top + inputBounds.height)
+  const enoughSpaceAbove = spaceAbove > popupElement.clientHeight
+  const enoughSpaceBelow = spaceBelow > popupElement.clientHeight
+  return !enoughSpaceBelow && enoughSpaceAbove
+}
+
 type ShortcutOptions = {
   shift?: boolean
   alt?: boolean

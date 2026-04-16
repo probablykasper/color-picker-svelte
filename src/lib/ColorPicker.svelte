@@ -3,7 +3,7 @@
   import ColorArea from './ColorArea.svelte'
   import HueSlider from './HueSlider.svelte'
   import AlphaSlider from './AlphaSlider.svelte'
-  import { Position, shouldShowAbove } from '$lib/index.js'
+  import { Position, shouldShowAbove } from './utils.js'
 
   let pickerEl: HTMLDivElement | undefined = $state()
 
